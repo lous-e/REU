@@ -1,0 +1,36 @@
+---
+title: "presentation notebook"
+author: "Om Mehta"
+format: html
+editor: visual
+---
+
+# Play around with SuperLearner
+
+-   Remove all objects from workspace
+
+```{r}
+#| label: clear environment
+rm(list = ls())
+```
+
+-   Import necessary libraries
+
+```{r}
+#| results: hide
+#| warning: false
+
+libraries <- c("tidyverse", "sigmoid")
+
+# Install all uninstalled packages
+check_and_install <- function(package) {
+  if (!package %in% rownames(installed.packages())) {
+    install.packages(package, dependencies = TRUE)
+  }
+  # load the package
+  library(package, character.only = TRUE)
+}
+
+# Apply the function to each required package
+lapply(libraries, check_and_install)
+```
